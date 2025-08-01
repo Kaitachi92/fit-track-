@@ -1,0 +1,494 @@
+.workout-day {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.workout-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.workout-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.5;
+}
+
+.workout-title {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.title-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title-display h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.title-edit-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.title-edit-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.title-editor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title-input {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  min-width: 300px;
+}
+
+.title-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.title-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.title-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.title-save,
+.title-cancel {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.title-save:hover {
+  background: rgba(34, 197, 94, 0.3);
+}
+
+.title-cancel:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.workout-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 8px 0 0 0;
+  font-weight: 300;
+}
+
+.workout-controls {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.edit-mode-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.edit-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.edit-mode-btn.active {
+  background: rgba(245, 158, 11, 0.3);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.edit-controls {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2px solid #22c55e;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.add-exercise-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.add-exercise-btn:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+}
+
+.empty-exercises {
+  text-align: center;
+  padding: 64px 32px;
+  color: #6b7280;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border: 2px dashed #d1d5db;
+  margin-bottom: 32px;
+}
+
+.empty-exercises h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+  color: #374151;
+}
+
+.empty-exercises p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.progress-section {
+  position: relative;
+  z-index: 1;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-text {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.progress-percentage {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.completion-banner {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  color: white;
+  animation: slideIn 0.5s ease, pulse 2s ease infinite;
+}
+
+.completion-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.completion-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.completion-text h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.completion-text p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.exercises-container {
+  margin-bottom: 32px;
+}
+
+.motivation-message {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid #22c55e;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  animation: fadeIn 0.5s ease;
+}
+
+.motivation-message span {
+  color: #15803d;
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 64px 32px;
+  color: #6b7280;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+  color: #374151;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .workout-day {
+    padding: 0 16px;
+  }
+  
+  .workout-header {
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+  }
+  
+  .title-display h1 {
+    font-size: 1.75rem;
+  }
+  
+  .title-input {
+    font-size: 1.5rem;
+    min-width: 250px;
+    padding: 10px 14px;
+  }
+  
+  .workout-subtitle {
+    font-size: 1rem;
+  }
+  
+  .edit-mode-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .edit-controls {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .add-exercise-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .progress-stats {
+    margin-bottom: 10px;
+  }
+  
+  .progress-text {
+    font-size: 0.9rem;
+  }
+  
+  .progress-percentage {
+    font-size: 1.1rem;
+  }
+  
+  .completion-banner {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .completion-content {
+    gap: 12px;
+  }
+  
+  .completion-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .completion-text h3 {
+    font-size: 1.2rem;
+  }
+  
+  .completion-text p {
+    font-size: 0.9rem;
+  }
+  
+  .motivation-message {
+    padding: 14px;
+    gap: 10px;
+  }
+  
+  .empty-state,
+  .empty-exercises {
+    padding: 48px 20px;
+  }
+  
+  .empty-state h3,
+  .empty-exercises h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .workout-day {
+    padding: 0 12px;
+  }
+  
+  .workout-header {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .title-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .title-display h1 {
+    font-size: 1.5rem;
+  }
+  
+  .title-input {
+    font-size: 1.3rem;
+    min-width: 200px;
+  }
+  
+  .title-editor {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .title-actions {
+    justify-content: center;
+  }
+  
+  .edit-mode-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .completion-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .empty-exercises {
+    padding: 32px 16px;
+  }
+}
